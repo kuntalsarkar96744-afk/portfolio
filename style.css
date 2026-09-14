@@ -1203,3 +1203,30 @@ body {
 [data-theme="light"] .cert-pill-btn:hover {
   color: var(--accent-cyan);
 }
+
+.hero-visual .hero-photo-wrapper {
+  width: 130px !important;
+  height: auto !important;
+  margin: 0 auto 28px !important;
+  .hero-profile-photo {
+  border: 2px solid rgba(0, 212, 255, 0.45);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    0 0 22px rgba(79, 124, 255, 0.22);
+}
+}
+
+.hero-visual .hero-profile-photo {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 22px;
+}
+
+@media (max-width: 768px) {
+  .hero-visual .hero-photo-wrapper {
+    width: 100% !important;
+  }
+}
