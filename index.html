@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kuntal Sarkar - Frontend Developer & Web Developer Portfolio. Explore projects, skills, and experience in React, Next.js, and modern web technologies." />
+  <meta name="keywords" content="Kuntal Sarkar, Web Developer, Frontend Developer, React, Next.js, Portfolio, Howrah, Kolkata" />
+  <meta name="author" content="Kuntal Sarkar" />
+  <title>Kuntal Sarkar | Frontend & Web Developer</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Canvas Particle Background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Glowing Cursor Follower -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">KS</span>
+        <span class="logo-dot">.</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#achievements" class="nav-link">Achievements</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle Switch -->
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="hamburger" id="hamburger" aria-label="Open Navigation Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge-pill reveal-fade">
+            <span class="status-indicator"></span>
+            <span>Available for Opportunities & Internships</span>
+          </div>
+          
+          <h1 class="hero-title reveal-fade">
+            Hi, I'm <span class="gradient-text">Kuntal Sarkar</span>
+          </h1>
+          
+          <div class="typewriter-box reveal-fade">
+            <span class="static-txt">I build </span>
+            <span class="dynamic-txt" id="typewriter"></span>
+            <span class="cursor-blink">|</span>
+          </div>
+
+          <p class="hero-description reveal-fade">
+            Frontend & Web Developer specializing in building modern, ultra-responsive, and visually compelling web applications with React, Next.js, and clean engineering practices.
+          </p>
+
+          <div class="hero-cta reveal-fade">
+            <a href="#projects" class="btn btn-primary">
+              <span>View Projects</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <span>Get In Touch</span>
+            </a>
+          </div>
+
+          <div class="social-links reveal-fade">
+            <a href="https://github.com/kuntalsarkar96744-afk" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/kuntal-sarkar-418962290" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="mailto:kuntalsarkar96744@gmail.com" class="social-icon" aria-label="Email">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal-scale">
+          <div class="code-terminal tilt-card">
+            <div class="terminal-header">
+              <span class="circle red"></span>
+              <span class="circle yellow"></span>
+              <span class="circle green"></span>
+              <span class="terminal-title">developer.config.ts</span>
+            </div>
+            <pre class="terminal-body"><code><span class="token-keyword">const</span> <span class="token-variable">developer</span> = {
+  <span class="token-prop">name</span>: <span class="token-string">'Kuntal Sarkar'</span>,
+  <span class="token-prop">education</span>: <span class="token-string">'BCA @ RCCIIT'</span>,
+  <span class="token-prop">location</span>: <span class="token-string">'Howrah, West Bengal'</span>,
+  <span class="token-prop">focus</span>: [<span class="token-string">'React'</span>, <span class="token-string">'Next.js'</span>, <span class="token-string">'Tailwind'</span>],
+  <span class="token-prop">passion</span>: <span class="token-string">'Modern UI/UX & High Performance'</span>,
+  <span class="token-prop">hireable</span>: <span class="token-boolean">true</span>
+};</code></pre>
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+          </div>
+        </div>
+      </div>
+      
+      <a href="#about" class="scroll-down-arrow" aria-label="Scroll Down">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header reveal-fade">
+          <span class="section-subtitle">Overview</span>
+          <h2 class="section-title">About Me</h2>
+          <div class="title-underline"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass-panel tilt-card reveal-left">
+            <h3>Crafting Engaging Web Experiences</h3>
+            <p>
+              I am a Bachelor of Computer Applications (BCA) student at RCC Institute of Information Technology (MAKAUT University), passionate about building performant, accessible, and responsive digital products.
+            </p>
+            <p>
+              With practical internship experience as a Web Developer at NIIT and Frontend Developer at Marko & Brando, I thrive at transforming creative concepts into elegant, robust code with modern JavaScript, React, and Next.js.
+            </p>
+            <div class="info-list">
+              <div class="info-item">
+                <span class="info-label">Location:</span>
+                <span class="info-value">Howrah, West Bengal, India</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Degree:</span>
+                <span class="info-value">BCA (2023–2027)</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Email:</span>
+                <span class="info-value">kuntalsarkar96744@gmail.com</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Languages:</span>
+                <span class="info-value">English, Hindi, Bengali</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-grid reveal-right">
+            <div class="stat-card glass-panel tilt-card">
+              <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+              <p class="stat-desc">Projects & Experiments</p>
+            </div>
+            <div class="stat-card glass-panel tilt-card">
+              <span class="stat-number" data-target="2">0</span>
+              <p class="stat-desc">Industry Internships</p>
+            </div>
+            <div class="stat-card glass-panel tilt-card">
+              <span class="stat-number" data-target="79">0</span><span class="stat-plus">%</span>
+              <p class="stat-desc">BCA Academic Standing</p>
+            </div>
+            <div class="stat-card glass-panel tilt-card">
+              <span class="stat-number" data-target="1">0</span><span class="stat-plus">st</span>
+              <p class="stat-desc">Design Finalist Award</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header reveal-fade">
+          <span class="section-subtitle">Expertise</span>
+          <h2 class="section-title">Technical Skills</h2>
+          <div class="title-underline"></div>
+        </div>
+
+        <div class="skills-wrapper">
+          <!-- Category 1: Frontend & UI -->
+          <div class="skill-group glass-panel tilt-card reveal-fade">
+            <div class="group-header">
+              <div class="group-icon">⚡</div>
+              <h3>Frontend & UI/UX</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">React.js</span>
+              <span class="skill-pill">Next.js</span>
+              <span class="skill-pill">JavaScript (ES6+)</span>
+              <span class="skill-pill">HTML5 & Semantic Markup</span>
+              <span class="skill-pill">CSS3 & Animations</span>
+              <span class="skill-pill">Tailwind CSS</span>
+              <span class="skill-pill">Bootstrap</span>
+              <span class="skill-pill">Responsive Design</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Programming & Backend -->
+          <div class="skill-group glass-panel tilt-card reveal-fade">
+            <div class="group-header">
+              <div class="group-icon">🛠️</div>
+              <h3>Programming & Backend</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">PHP</span>
+              <span class="skill-pill">MySQL</span>
+              <span class="skill-pill">Supabase</span>
+              <span class="skill-pill">Java</span>
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">C</span>
+              <span class="skill-pill">RESTful APIs</span>
+            </div>
+          </div>
+
+          <!-- Category 3: APIs, AI & Tools -->
+          <div class="skill-group glass-panel tilt-card reveal-fade">
+            <div class="group-header">
+              <div class="group-icon">🚀</div>
+              <h3>APIs, AI & Tools</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Google Gemini API</span>
+              <span class="skill-pill">Authentication (Auth/OAuth)</span>
+              <span class="skill-pill">Git & GitHub</span>
+              <span class="skill-pill">VS Code & Cursor AI</span>
+              <span class="skill-pill">Vercel Deployment</span>
+              <span class="skill-pill">Hardware IoT (ESP32)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-header reveal-fade">
+          <span class="section-subtitle">Career Path</span>
+          <h2 class="section-title">Experience & Education</h2>
+          <div class="title-underline"></div>
+        </div>
+
+        <div class="timeline">
+          <!-- Item 1 -->
+          <div class="timeline-item reveal-left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel tilt-card">
+              <span class="timeline-date">Aug 2026 – Present</span>
+              <h3 class="timeline-title">Frontend Developer Intern</h3>
+              <h4 class="timeline-org">Marko & Brando</h4>
+              <p>
+                Developing dynamic client-facing web interfaces, implementing responsive UI design patterns, and optimizing performance for modern web applications.
+              </p>
+              <div class="timeline-tags">
+                <span>Frontend</span><span>React</span><span>Web Performance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item reveal-right">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel tilt-card">
+              <span class="timeline-date">May 2026 – Jul 2026 (2 Months)</span>
+              <h3 class="timeline-title">Web Developer Intern</h3>
+              <h4 class="timeline-org">NIIT Limited</h4>
+              <p>
+                Gained practical industry exposure in full-cycle web development, collaborating on web projects, applying best practices in modular JavaScript, and building responsive user layouts.
+              </p>
+              <div class="timeline-tags">
+                <span>HTML5/CSS3</span><span>JavaScript</span><span>UI Architecture</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item reveal-left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel tilt-card">
+              <span class="timeline-date">2023 – 2027</span>
+              <h3 class="timeline-title">Bachelor of Computer Applications (BCA)</h3>
+              <h4 class="timeline-org">RCC Institute of Information Technology (MAKAUT)</h4>
+              <p>
+                Core curriculum in Data Structures, Web Technologies, Database Management Systems, and Software Engineering. Maintained 79% academic standing.
+              </p>
+              <div class="timeline-tags">
+                <span>Computer Science</span><span>Databases</span><span>Software Architecture</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header reveal-fade">
+          <span class="section-subtitle">Portfolio</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="title-underline"></div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Credify -->
+          <article class="project-card glass-panel tilt-card reveal-fade">
+            <div class="project-header">
+              <div class="folder-icon">🛡️</div>
+              <div class="project-links">
+                <a href="https://github.com/kuntalsarkar96744-afk" target="_blank" rel="noopener noreferrer" aria-label="Credify Source Code">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Credify — Scam Detection & Trust Verification</h3>
+            <p class="project-desc">
+              An intelligent forensic placement and trust verification engine designed to detect online scams and verify legitimacy using Google Gemini AI, secure Supabase authentication, and responsive Next.js interfaces.
+            </p>
+            <div class="project-tags">
+              <span>Next.js</span><span>React</span><span>Supabase</span><span>Gemini API</span>
+            </div>
+          </article>
+
+          <!-- Project 2: Evento -->
+          <article class="project-card glass-panel tilt-card reveal-fade">
+            <div class="project-header">
+              <div class="folder-icon">🎟️</div>
+              <div class="project-links">
+                <a href="https://github.com/kuntalsarkar96744-afk" target="_blank" rel="noopener noreferrer" aria-label="Evento Source Code">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Evento — Modern Event Management Hub</h3>
+            <p class="project-desc">
+              Comprehensive event management platform featuring client-side form validation, dynamic filtering, reusable layout architecture, and fluid transitions built with React and Next.js.
+            </p>
+            <div class="project-tags">
+              <span>React</span><span>Next.js</span><span>Tailwind CSS</span><span>UX Design</span>
+            </div>
+          </article>
+
+          <!-- Project 3: Student Management System -->
+          <article class="project-card glass-panel tilt-card reveal-fade">
+            <div class="project-header">
+              <div class="folder-icon">🎓</div>
+              <div class="project-links">
+                <a href="https://github.com/kuntalsarkar96744-afk" target="_blank" rel="noopener noreferrer" aria-label="Student Management System Source Code">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Student Management System</h3>
+            <p class="project-desc">
+              Robust academic database platform supporting role-based administrative access controls, student enrollment pipelines, and dynamic record querying built with PHP and MySQL.
+            </p>
+            <div class="project-tags">
+              <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>CRUD Operations</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section class="section achievements-section" id="achievements">
+      <div class="container">
+        <div class="section-header reveal-fade">
+          <span class="section-subtitle">Recognition</span>
+          <h2 class="section-title">Achievements & Hackathons</h2>
+          <div class="title-underline"></div>
+        </div>
+
+        <div class="achievements-grid">
+          <div class="achievement-card glass-panel tilt-card reveal-left">
+            <div class="achievement-badge">🏆 Finalist</div>
+            <h3>9th Inter-College Prototype Design for Mankind</h3>
+            <p class="achievement-org">Heritage Institute of Technology</p>
+            <p class="achievement-text">
+              Recognized as a competitive finalist for designing an innovative technological hardware & software prototype aimed at addressing human safety challenges.
+            </p>
+          </div>
+
+          <div class="achievement-card glass-panel tilt-card reveal-right">
+            <div class="achievement-badge">💡 Hackathon</div>
+            <h3>OMTECH Hackathon Program</h3>
+            <p class="achievement-org">OmDayal Group of Institutions</p>
+            <p class="achievement-text">
+              Participated in an intensive hackathon environment, building collaborative software solutions under tight time constraints and presenting architectural demos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header reveal-fade">
+          <span class="section-subtitle">Get In Touch</span>
+          <h2 class="section-title">Let's Connect</h2>
+          <div class="title-underline"></div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Info Column -->
+          <div class="contact-info glass-panel tilt-card reveal-left">
+            <h3>Start a Conversation</h3>
+            <p>
+              Whether you're looking to hire a passionate frontend developer intern, discuss a freelance project, or just say hi, my inbox is always open!
+            </p>
+
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="c-icon">📍</div>
+                <div>
+                  <h4>Location</h4>
+                  <p>Howrah, West Bengal, India</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="c-icon">✉️</div>
+                <div>
+                  <h4>Email</h4>
+                  <a href="mailto:kuntalsarkar96744@gmail.com">kuntalsarkar96744@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="c-icon">💼</div>
+                <div>
+                  <h4>LinkedIn</h4>
+                  <a href="https://www.linkedin.com/in/kuntal-sarkar-418962290" target="_blank" rel="noopener noreferrer">kuntal-sarkar-418962290</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="c-icon">💻</div>
+                <div>
+                  <h4>GitHub</h4>
+                  <a href="https://github.com/kuntalsarkar96744-afk" target="_blank" rel="noopener noreferrer">kuntalsarkar96744-afk</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Column -->
+          <div class="contact-form-wrapper glass-panel reveal-right">
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Project Inquiry / Job Opportunity" required />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Hi Kuntal, I came across your portfolio..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary submit-btn">
+                <span>Send Message</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+              
+              <div class="form-feedback" id="formFeedback"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 Kuntal Sarkar. Designed & Coded with modern Web Standards.</p>
+      <div class="footer-links">
+        <a href="#hero">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
