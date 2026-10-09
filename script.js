@@ -390,43 +390,52 @@ function initActiveNavHighlight() {
 }
 
 /* --------------------------------------------------------------------------
-   9. Interactive Contact Form with Validation & Mailto Fallback
+   9. Contact Form Submission
    -------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const feedback = document.getElementById('formFeedback');
 
   if (form && feedback) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
+      const submitButton = form.querySelector('button[type="submit"]');
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
 
-      if (!name || !email || !message) {
+      submitButton.disabled = true;
+      feedback.className = 'form-feedback';
+      feedback.style.display = 'block';
+      feedback.style.color = '';
+      feedback.textContent = 'Sending your message...';
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/kuntalsarkar96744@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+
+        if (!response.ok || result.success === false) {
+          throw new Error('Message could not be sent. Please try again.');
+        }
+
+        feedback.className = 'form-feedback success';
+        feedback.textContent = 'Message sent successfully. Thank you!';
+        form.reset();
+      } catch (error) {
         feedback.className = 'form-feedback';
         feedback.style.display = 'block';
         feedback.style.color = '#ef4444';
-        feedback.textContent = 'Please fill out all required fields.';
-        return;
+        feedback.textContent = error.message || 'Message could not be sent. Please try again.';
+      } finally {
+        submitButton.disabled = false;
       }
-
-      // Generate mailto trigger
-      const mailtoUrl = `mailto:kuntalsarkar96744@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}
-Email: ${email}
-
-Message:
-${message}`)}`;
-      
-      feedback.className = 'form-feedback success';
-      feedback.textContent = 'Thank you! Launching your email client...';
-
-      setTimeout(() => {
-        window.location.href = mailtoUrl;
-        form.reset();
-      }, 700);
     });
   }
 }
