@@ -238,7 +238,17 @@ function initScrollAnimations() {
     { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
   );
 
-  revealElements.forEach((el) => observer.observe(el));
+  revealElements.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const isVisibleOnLoad = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (isVisibleOnLoad) {
+      el.classList.add('revealed');
+      return;
+    }
+
+    observer.observe(el);
+  });
 
   // Stat Counter Animation
   const statNumbers = document.querySelectorAll('.stat-number');
